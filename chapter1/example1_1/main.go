@@ -26,7 +26,7 @@ func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	response := helloWorldResponse{Message: "Hello World!", Author: "Christian", Date: "05/07/2022", Id: 1}
 	data, err := json.Marshal(response)
 	if err != nil {
-		panic("Json marshaling error")
+		panic("json marshaling error")
 	}
 	fmt.Fprint(w, string(data))
 }
