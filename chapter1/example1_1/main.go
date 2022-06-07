@@ -24,7 +24,7 @@ func main() {
 }
 func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	response := helloWorldResponse{Message: "Hello World!", Author: "Christian", Date: "05/07/2022", Id: 1}
-	data, err := json.Marshal(response)
+	data, err := json.MarshalIndent(response, "", "    ")
 	if err != nil {
 		panic("json marshaling error")
 	}
