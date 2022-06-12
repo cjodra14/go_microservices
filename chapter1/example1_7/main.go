@@ -18,6 +18,9 @@ type helloWorldResponse struct {
 func main() {
 	port := 8080
 
+	cathandler := http.FileServer(http.Dir("./images"))
+	http.Handle("/cat/", http.StripPrefix("/cat/", cathandler))
+
 	http.HandleFunc("/helloworld", helloWorldHandler)
 
 	log.Printf("Server starting on port %v\n", port)
