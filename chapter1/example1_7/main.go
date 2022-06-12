@@ -15,19 +15,10 @@ type helloWorldResponse struct {
 	Message string `json:"message"`
 }
 
-const (
-	imagesDirectory    = "./images"
-	helloworldEndPoint = "/helloworld"
-	catEndpoint        = "/cat/"
-)
-
 func main() {
 	port := 8080
 
-	catHandler := http.FileServer(http.Dir(imagesDirectory))
-	http.Handle(catEndpoint, http.StripPrefix(catEndpoint, catHandler))
-
-	http.HandleFunc(helloworldEndPoint, helloWorldHandler)
+	http.HandleFunc("/helloworld", helloWorldHandler)
 
 	log.Printf("Server starting on port %v\n", port)
 	log.Fatal(http.ListenAndServe(
